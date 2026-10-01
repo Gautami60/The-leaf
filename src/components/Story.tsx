@@ -32,7 +32,7 @@ export const Story: React.FC = () => {
               </p>
             </div>
 
-            {/* Editorial Highlights */}
+            {/* Highlights */}
             <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#2e2722]/80">
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-[#7d8c79]">
@@ -62,17 +62,6 @@ export const Story: React.FC = () => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#12100e]/70 via-transparent to-transparent opacity-60" />
-            </div>
-
-            {/* Overlapping Badge */}
-            <div className="hidden sm:flex absolute -bottom-8 -left-8 z-20 bg-[#1c1815] p-6 rounded-xl border border-[#2e2722] shadow-2xl max-w-xs items-center gap-4 backdrop-blur-md">
-              <div className="w-12 h-12 rounded-full bg-[#7d8c79]/20 border border-[#7d8c79]/40 flex items-center justify-center shrink-0">
-                <Leaf className="w-6 h-6 text-[#7d8c79]" />
-              </div>
-              <div>
-                <p className="text-xs text-[#7d8c79] font-mono uppercase tracking-widest">REAL AMBIANCE</p>
-                <p className="text-sm font-serif text-[#faf7f2] font-semibold">The Leaf. Indoor Lounge & Bar</p>
-              </div>
             </div>
           </div>
 

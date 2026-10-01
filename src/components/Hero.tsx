@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { ArrowRight, Utensils, Sparkles, Image as ImageIcon } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, Utensils, Sparkles } from 'lucide-react';
 import { LEAF_IMAGE_ASSETS } from '../data/imageAssets';
 
 interface HeroProps {
@@ -8,49 +8,32 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onWhatsNew }) => {
-  const [currentBg, setCurrentBg] = useState<'balcony' | 'interior'>('balcony');
-
-  const bgUrl = currentBg === 'balcony'
-    ? LEAF_IMAGE_ASSETS.hero.url
-    : LEAF_IMAGE_ASSETS.interior_main.url;
-
   return (
     <section
       id="home"
       className="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#12100e]"
     >
-      {/* Real Photography Background (Authentic The Leaf Balcony & Interior) */}
+      {/* Real Balcony Photography Background */}
       <div className="absolute inset-0 z-0">
         <img
-          src={bgUrl}
-          alt="The Leaf. Cafe & Brew Real Atmosphere in Bhopal"
-          className="w-full h-full object-cover brightness-[0.72] contrast-[1.05] transition-all duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          src={LEAF_IMAGE_ASSETS.hero.url}
+          alt="The Leaf. Outdoor balcony in Arera Colony, Bhopal"
+          className="w-full h-full object-cover scale-105 brightness-[0.70] contrast-[1.05] duration-[25s] transition-transform"
         />
-        {/* Subtle dark editorial overlay to ensure pristine typography legibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#12100e] via-[#12100e]/40 to-[#12100e]/75 opacity-95" />
-        <div className="absolute inset-0 bg-radial from-transparent via-[#12100e]/20 to-[#12100e]/80" />
+        {/* Subtle dark editorial overlay for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#12100e] via-[#12100e]/45 to-[#12100e]/75 opacity-95" />
+        <div className="absolute inset-0 bg-radial from-transparent via-[#12100e]/20 to-[#12100e]/85" />
       </div>
 
       {/* Content Container */}
       <div className="relative z-10 max-w-5xl mx-auto px-6 md:px-12 text-center pt-28 pb-16 flex flex-col items-center">
         
-        {/* Real Cafe View Switcher Badge */}
-        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#1c1815]/90 border border-[#2e2722] backdrop-blur-md mb-8 shadow-xl">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#7d8c79] animate-pulse" />
+        {/* Brand Accent */}
+        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-[#1c1815]/85 border border-[#2e2722] backdrop-blur-md mb-8 shadow-lg">
+          <span className="w-2 h-2 rounded-full bg-[#7d8c79] animate-pulse" />
           <span className="text-xs uppercase tracking-[0.25em] text-[#faf7f2] font-mono font-medium">
             THE LEAF · CAFE & BREW
           </span>
-          <span className="h-3 w-[1px] bg-[#2e2722]" />
-          
-          {/* Quick Toggle between Real Balcony & Real Interior */}
-          <button
-            onClick={() => setCurrentBg(currentBg === 'balcony' ? 'interior' : 'balcony')}
-            className="text-[10px] font-mono text-[#7d8c79] hover:text-[#eae3d2] uppercase tracking-wider flex items-center gap-1 cursor-pointer transition-colors"
-            title="Switch Real View"
-          >
-            <ImageIcon className="w-3 h-3" />
-            <span>View {currentBg === 'balcony' ? 'Indoor Lounge ➔' : 'Balcony View ➔'}</span>
-          </button>
         </div>
 
         {/* Big Cormorant Garamond Heading */}
@@ -84,12 +67,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreMenu, onWhatsNew }) => {
             <ArrowRight className="w-4 h-4 text-[#7d8c79] group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
-      </div>
-
-      {/* Real Cafe View Label at Bottom */}
-      <div className="absolute bottom-8 left-6 z-10 hidden md:flex items-center gap-2 text-[11px] font-mono text-[#c4bcae]/80 bg-[#12100e]/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#2e2722]">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#7d8c79]" />
-        <span>AUTHENTIC PHOTOGRAPH: {currentBg === 'balcony' ? 'Real 1st Floor Balcony, Arera Colony' : 'Real Main Indoor Lounge & Bar'}</span>
       </div>
 
       {/* Scroll Indicator */}

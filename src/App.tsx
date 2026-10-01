@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Story } from './components/Story';
-import { WhatsNew } from './components/WhatsNew';
 import { Menu } from './components/Menu';
+import { WhatsNew } from './components/WhatsNew';
 import { PersonalOffers } from './components/PersonalOffers';
-import { CoffeeSection } from './components/Coffee';
-import { Gallery } from './components/Gallery';
 import { Experience } from './components/Experience';
 import { EventsHappenings } from './components/EventsHappenings';
 import { Reviews } from './components/Reviews';
@@ -91,43 +89,37 @@ export function App() {
         onOpenCms={() => setIsCmsOpen(true)}
       />
 
-      {/* Hero Section */}
+      {/* 1. Hero Section */}
       <Hero
         onExploreMenu={() => scrollToSection('#menu')}
         onWhatsNew={() => scrollToSection('#whats-new')}
       />
 
-      {/* 1. Story Section */}
+      {/* 2. Story Section */}
       <Story />
 
-      {/* 2. What's New Section */}
-      <WhatsNew items={whatsNewList} />
-
-      {/* 3. Signature Menu Section */}
+      {/* 3. Menu Section */}
       <Menu
         items={menuList}
         onOpenReservation={() => setIsReservationOpen(true)}
       />
 
-      {/* 4. Personal Offers Section */}
+      {/* 4. What's New Section */}
+      <WhatsNew items={whatsNewList} />
+
+      {/* 5. Personal Offers Section */}
       <PersonalOffers offers={offersList} />
 
-      {/* 5. Coffee Section */}
-      <CoffeeSection />
-
-      {/* 6. Gallery Section */}
-      <Gallery />
-
-      {/* 7. Experience Section */}
+      {/* 6. Experience Section */}
       <Experience />
 
-      {/* 8. Events & Happenings Section */}
+      {/* 7. Events & Happenings */}
       <EventsHappenings events={eventsList} />
 
-      {/* 9. Reviews Section */}
+      {/* 8. Reviews Section */}
       <Reviews />
 
-      {/* 10. Visit Section */}
+      {/* 9. Visit Section */}
       <Visit onOpenReservation={() => setIsReservationOpen(true)} />
 
       {/* Customer Reservation Modal */}

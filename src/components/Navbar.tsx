@@ -27,6 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { name: 'Menu', href: '#menu' },
     { name: "What's New", href: '#whats-new' },
     { name: 'Offers', href: '#offers' },
+    { name: 'Experience', href: '#experience' },
     { name: 'Visit', href: '#visit' },
   ];
 
@@ -65,7 +66,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             <img
               src="/images/the_leaf_official_logo.png"
               alt="The Leaf. Official Logo"
-              className="h-10 md:h-12 w-auto object-contain rounded-full shadow-md group-hover:scale-105 group-hover:rotate-3 transition-all duration-300 border border-[#7d8c79]/30"
+              className="h-10 md:h-12 w-auto object-contain rounded-full shadow-md group-hover:scale-105 transition-all duration-300 border border-[#7d8c79]/30"
             />
             <span className="font-serif font-medium tracking-tight">The Leaf<span className="text-[#7d8c79]">.</span></span>
           </a>
@@ -86,8 +87,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center space-x-3">
-            
-            {/* CMS / Staff Portal Toggle */}
             <button
               onClick={onOpenCms}
               className="px-3.5 py-2 text-[11px] font-mono uppercase tracking-wider text-[#c4bcae] hover:text-[#faf7f2] bg-[#1c1815] border border-[#2e2722] hover:border-[#7d8c79]/50 rounded-full transition-all cursor-pointer flex items-center gap-1.5"
@@ -97,7 +96,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>CMS Portal ⚙️</span>
             </button>
 
-            {/* Reserve Table CTA */}
             <button
               onClick={onOpenReservation}
               className="group relative inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-manrope font-bold text-[#12100e] bg-[#faf7f2] hover:bg-[#eae3d2] rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
