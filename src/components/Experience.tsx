@@ -1,98 +1,130 @@
 import React from 'react';
-import { Sun, MessageCircle, Utensils, Coffee } from 'lucide-react';
+import { motion } from 'motion/react';
+import { LEAF_IMAGE_ASSETS } from '../data/imageAssets';
+import { fadeInUp, imageReveal } from '../utils/motion';
 
 export const Experience: React.FC = () => {
-  const pillars = [
-    {
-      title: 'Slow mornings',
-      subtitle: '11:00 AM Dawn Pause',
-      description: 'Gentle natural light streaming through tall windows, soft acoustic melodies, warm croissants, and the scent of freshly ground Chikmagalur beans to start your day.',
-      icon: Sun
-    },
-    {
-      title: 'Long conversations',
-      subtitle: 'Sanctuary for Connection',
-      description: 'Deep comfortable booths, warm timber finishes, low evening ambiance, and an environment crafted specifically for unhurried talks that stretch into the evening.',
-      icon: MessageCircle
-    },
-    {
-      title: 'Good food',
-      subtitle: 'Artisanal & Comforting',
-      description: 'Handcrafted pasta sauces, fresh mozzarella, hand-tossed noodles, and baked cheeses prepared fresh from scratch using farm-sourced produce.',
-      icon: Utensils
-    },
-    {
-      title: 'Better coffee',
-      subtitle: 'Specialty Extraction',
-      description: 'Ethically sourced 100% Arabica beans, roasted in small batches, precisely weighed, and brewed using V60, Aeropress & pressure espresso methods.',
-      icon: Coffee
-    }
-  ];
+  const galleryAsset = LEAF_IMAGE_ASSETS.gallery_wall;
 
   return (
-    <section id="experience" className="relative py-28 md:py-36 bg-[#171411] text-[#faf7f2] border-b border-[#2e2722]/40">
+    <section id="experience" className="w-full bg-[#0d0f0e] py-24 md:py-32 font-body-md border-t border-[#4c463c]/20">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#1c1815] border border-[#2e2722] text-[11px] font-mono uppercase tracking-[0.25em] text-[#7d8c79]">
-            THE LEAF. EXPERIENCE
-          </div>
-
-          <h2 className="font-serif text-5xl md:text-7xl font-normal leading-tight text-[#faf7f2]">
-            Come for the coffee.<br />
-            <span className="italic text-[#eae3d2] font-serif">Stay for the atmosphere.</span>
-          </h2>
-
-          <p className="text-base md:text-lg text-[#c4bcae] font-serif italic max-w-xl mx-auto">
-            “A serene space crafted with natural timber, warm sunlight, and an unhurried cadence in the heart of Arera Colony.”
-          </p>
+        {/* Section Header */}
+        <div className="flex items-center justify-between border-b border-[#4c463c]/30 pb-3 mb-12">
+          <span className="font-label-caps text-xs text-[#dac498] tracking-widest uppercase">
+            01 / DISPATCHES & HARVEST
+          </span>
+          <span className="font-label-caps text-xs text-[#989083] uppercase tracking-wider">
+            CURRENT CYCLE • AUTUMN
+          </span>
         </div>
 
-        {/* 4 Pillars Typographic Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {pillars.map((pillar, index) => {
-            const IconComponent = pillar.icon;
-            return (
-              <div
-                key={pillar.title}
-                className="group bg-[#1c1815] p-8 rounded-3xl border border-[#2e2722] hover:border-[#7d8c79]/50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col justify-between hover:-translate-y-1.5 shadow-xl"
-              >
-                <div className="space-y-6">
-                  {/* Top Header */}
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono text-[#7d8c79]">0{index + 1}</span>
-                    <div className="w-10 h-10 rounded-2xl bg-[#12100e] border border-[#2e2722] flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <IconComponent className="w-5 h-5 text-[#7d8c79]" />
-                    </div>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          {/* Dominant Featured Story with Gallery Wall Photo */}
+          <motion.article
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={imageReveal}
+            className="lg:col-span-7 flex flex-col group cursor-pointer"
+          >
+            <div className="relative w-full aspect-[4/3] overflow-hidden border border-[#4c463c]/30 bg-[#1e201f]">
+              <img
+                src={galleryAsset.url}
+                alt={galleryAsset.alt}
+                className="w-full h-full object-cover object-center filter contrast-105 group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-[#0d0f0e] to-transparent pointer-events-none" />
+            </div>
 
-                  {/* Title & Subtitle */}
-                  <div className="space-y-1">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-[#c4bcae]/60 block">
-                      {pillar.subtitle}
-                    </span>
-                    <h3 className="font-serif text-3xl text-[#faf7f2] group-hover:text-[#eae3d2] transition-colors">
-                      {pillar.title}
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <p className="text-xs text-[#c4bcae] font-manrope font-light leading-relaxed">
-                    {pillar.description}
-                  </p>
-                </div>
-
-                <div className="pt-6 mt-8 border-t border-[#2e2722]/60 text-[11px] font-mono text-[#7d8c79] uppercase tracking-wider flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#7d8c79]" />
-                  <span>Arera Colony Vibe</span>
-                </div>
+            <div className="mt-6">
+              <div className="flex items-center gap-3 font-label-caps text-xs text-[#bccaba] mb-2 tracking-wider uppercase">
+                <span>OCTOBER 2024</span>
+                <span>•</span>
+                <span>CURATED BY STUDIO LEAF</span>
               </div>
-            );
-          })}
+              <h3 className="font-headline-md text-2xl sm:text-3xl font-serif text-[#e2e3e0] group-hover:text-[#dac498] transition-colors leading-tight">
+                Monoliths & Pagodas: The Upper Gallery Installation
+              </h3>
+              <p className="mt-3 font-body-md text-sm sm:text-base text-[#cfc5b7] font-light leading-relaxed">
+                Ten framed monochromatic captures documenting monastic structures and ancient geometry grace our transitional gallery corridor, lit exclusively by high-CRI 2700K brass directional lights.
+              </p>
+            </div>
+          </motion.article>
+
+          {/* Secondary Text-Only Editorial Stories */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+            
+            {/* Story 02 */}
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={fadeInUp}
+              className="border-t border-[#4c463c]/30 pt-6 group cursor-pointer hover:border-[#dac498] transition-colors"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-label-caps text-xs text-[#dac498] uppercase tracking-widest">
+                  COFFEE SELECTION
+                </span>
+                <span className="font-label-caps text-xs text-[#989083]">EDITION 02</span>
+              </div>
+              <h4 className="font-headline-sm text-xl font-serif text-[#e2e3e0] group-hover:text-[#dac498] transition-colors leading-tight">
+                The Monsoon Harvest Geisha: 72hr Anaerobic Fermentation from Chikmagalur
+              </h4>
+              <p className="mt-2 font-body-sm text-xs sm:text-sm text-[#cfc5b7] font-light leading-relaxed">
+                Tasting notes of white jasmine blossom, wild dried apricot, and caramelized bergamot. Micro-lot allocated exclusively to our inverted siphon extraction station.
+              </p>
+              <div className="mt-4 flex items-center gap-2 font-label-caps text-xs text-[#dac498] tracking-wider">
+                <span>EXPLORE HARVEST</span>
+                <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </div>
+            </motion.article>
+
+            {/* Story 03 */}
+            <motion.article
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-50px' }}
+              variants={fadeInUp}
+              className="border-t border-[#4c463c]/30 pt-6 group cursor-pointer hover:border-[#dac498] transition-colors"
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="font-label-caps text-xs text-[#dac498] uppercase tracking-widest">
+                  NOCTURNE SERIES
+                </span>
+                <span className="font-label-caps text-xs text-[#989083]">EDITION 03</span>
+              </div>
+              <h4 className="font-headline-sm text-xl font-serif text-[#e2e3e0] group-hover:text-[#dac498] transition-colors leading-tight">
+                Balcony Twilight Acoustics: Ambient Lo-Fi Tape Sessions Every Thursday
+              </h4>
+              <p className="mt-2 font-body-sm text-xs sm:text-sm text-[#cfc5b7] font-light leading-relaxed">
+                Reel-to-reel tape playback calibrated to match the descending dusk. Curated sonic warmth designed for reading, reflection, and quiet evening companionhood.
+              </p>
+              <div className="mt-4 flex items-center gap-2 font-label-caps text-xs text-[#dac498] tracking-wider">
+                <span>VIEW SOUND ARCHIVE</span>
+                <span className="material-symbols-outlined text-[14px]">arrow_forward</span>
+              </div>
+            </motion.article>
+
+            {/* Small Curatorial Note */}
+            <div className="p-5 bg-[#1e201f] border border-[#4c463c]/20">
+              <span className="font-label-caps text-xs text-[#bccaba] block mb-1 uppercase tracking-widest">
+                BOTANICAL NOTICE
+              </span>
+              <p className="font-body-sm text-xs text-[#cfc5b7] font-light leading-relaxed">
+                Our living balcony cultivars are tended organically without synthetic pesticides. Guests are invited to gently brush the mint and sage stems along the veranda perimeter.
+              </p>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
     </section>
   );
 };
+

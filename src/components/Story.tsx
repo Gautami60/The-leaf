@@ -1,72 +1,78 @@
 import React from 'react';
-import { Coffee, Heart, Leaf } from 'lucide-react';
+import { motion } from 'motion/react';
 import { LEAF_IMAGE_ASSETS } from '../data/imageAssets';
+import { fadeInUp, imageReveal } from '../utils/motion';
 
 export const Story: React.FC = () => {
   return (
-    <section id="story" className="relative py-28 md:py-36 bg-[#12100e] text-[#faf7f2] overflow-hidden border-b border-[#2e2722]/40">
+    <section id="story" className="w-full bg-[#1a1c1b] py-24 md:py-32 border-t border-b border-[#4c463c]/20 font-body-md">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
-        {/* Section Header Tag */}
-        <div className="flex items-center gap-3 mb-6">
-          <Leaf className="w-4 h-4 text-[#7d8c79]" />
-          <span className="text-xs uppercase tracking-[0.25em] text-[#7d8c79] font-mono font-medium">OUR STORY</span>
-          <div className="h-[1px] w-12 bg-[#2e2722]" />
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
-          {/* Left Text Column */}
-          <div className="lg:col-span-6 space-y-8">
-            <h2 className="font-serif text-4xl md:text-6xl text-[#faf7f2] font-normal leading-[1.15]">
-              “Made for moments that <span className="italic text-[#eae3d2] font-serif">linger.</span>”
-            </h2>
+          {/* Editorial Pull Statement */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={fadeInUp}
+            className="lg:col-span-5 flex flex-col justify-center"
+          >
+            <span className="font-label-caps text-xs text-[#bccaba] tracking-widest uppercase mb-3">
+              Architectural Philosophy
+            </span>
+            
+            <blockquote className="font-headline-md text-3xl sm:text-4xl lg:text-5xl font-serif text-[#e2e3e0] leading-snug">
+              “An intentional retreat above the city floor, crafted for quiet focus and nocturnal cadence.”
+            </blockquote>
 
-            <div className="space-y-6 text-[#c4bcae] text-base md:text-lg font-light leading-relaxed font-manrope">
-              <p>
-                Tucked away on the first floor in Arera Colony, <strong className="text-[#faf7f2] font-semibold">The Leaf.</strong> was built as an antidote to the hurry of modern life. We set out to create a serene sanctuary where time slows down, coffee is treated as an art form, and food is prepared with unhurried devotion.
-              </p>
+            <p className="mt-6 font-body-md text-sm sm:text-base text-[#cfc5b7] font-light leading-relaxed">
+              Designed as an interplay between deep mineral hues, tactile walnut timber, and plush peacock-teal velvets. Natural acoustic damping creates an intimate sanctuary where sound dissolves into soft whispers and pouring water.
+            </p>
 
-              <p>
-                Whether you arrive for a quiet morning cold brew with sunlight filtering through the window, an intimate evening catching up with an old friend, or a solitary afternoon with your favorite book, every detail in our space—from our warm timber tables to our handpicked 100% Arabica beans—is designed to welcome you home.
-              </p>
-            </div>
-
-            {/* Highlights */}
-            <div className="grid grid-cols-2 gap-6 pt-6 border-t border-[#2e2722]/80">
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-[#7d8c79]">
-                  <Coffee className="w-4 h-4" />
-                  <span className="text-xs uppercase tracking-widest font-mono text-[#faf7f2]">Artisan Roasts</span>
-                </div>
-                <p className="text-xs text-[#c4bcae] font-manrope">Single-origin Arabica beans roasted with meticulous care.</p>
+            {/* Spec Ledger */}
+            <div className="mt-10 grid grid-cols-3 gap-4 pt-6 border-t border-[#4c463c]/30">
+              <div>
+                <span className="font-headline-sm text-2xl sm:text-3xl font-serif text-[#dac498] block">140+</span>
+                <span className="font-label-caps text-[10px] sm:text-xs text-[#989083] uppercase tracking-wider block mt-1">Native Cultivars</span>
               </div>
-
-              <div className="space-y-2">
-                <div className="flex items-center gap-2 text-[#7d8c79]">
-                  <Heart className="w-4 h-4" />
-                  <span className="text-xs uppercase tracking-widest font-mono text-[#faf7f2]">Crafted Scratch</span>
-                </div>
-                <p className="text-xs text-[#c4bcae] font-manrope">Handcrafted sauces, fresh bakes & sourdough dishes daily.</p>
+              <div>
+                <span className="font-headline-sm text-2xl sm:text-3xl font-serif text-[#dac498] block">48dB</span>
+                <span className="font-label-caps text-[10px] sm:text-xs text-[#989083] uppercase tracking-wider block mt-1">Acoustic Floor</span>
+              </div>
+              <div>
+                <span className="font-headline-sm text-2xl sm:text-3xl font-serif text-[#dac498] block">92°C</span>
+                <span className="font-label-caps text-[10px] sm:text-xs text-[#989083] uppercase tracking-wider block mt-1">Precision Extraction</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Column: Authentic Indoor Photograph of The Leaf */}
-          <div className="lg:col-span-6 relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-[#2e2722] group">
+          {/* Authentic Interior Photo (Image 19: Apothecary Bar & Velvet Seating) */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-50px' }}
+            variants={imageReveal}
+            className="lg:col-span-7"
+          >
+            <div className="relative w-full aspect-[16/10] overflow-hidden border border-[#4c463c]/30 bg-[#1e201f] group">
               <img
-                src={LEAF_IMAGE_ASSETS.interior_main.url}
-                alt={LEAF_IMAGE_ASSETS.interior_main.alt}
-                className="w-full h-[420px] md:h-[520px] object-cover group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                loading="lazy"
+                src={LEAF_IMAGE_ASSETS.indoor_lounge.url}
+                alt={LEAF_IMAGE_ASSETS.indoor_lounge.alt}
+                className="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700 ease-out"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12100e]/70 via-transparent to-transparent opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1a1c1b]/40 via-transparent to-transparent pointer-events-none" />
+              
+              <div className="absolute top-4 right-4 bg-[#0d0f0e]/80 backdrop-blur-sm px-3 py-1.5 border border-[#4c463c]/30">
+                <span className="font-label-caps text-[10px] text-[#bccaba] tracking-widest uppercase">
+                  THE ATRIUM BAR
+                </span>
+              </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>
     </section>
   );
 };
+

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { GlobalAtmosphere } from './components/GlobalAtmosphere';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Story } from './components/Story';
@@ -81,8 +82,11 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#12100e] text-[#faf7f2] font-manrope selection:bg-[#7d8c79]/30 selection:text-[#faf7f2] overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a1410] text-[#faf7f2] font-inter selection:bg-[#7d8c79]/30 selection:text-[#faf7f2] overflow-x-hidden relative">
       
+      {/* 0. Global Starry Night Atmosphere Background Shell */}
+      <GlobalAtmosphere />
+
       {/* Top Navbar */}
       <Navbar
         onOpenReservation={() => setIsReservationOpen(true)}
@@ -92,7 +96,6 @@ export function App() {
       {/* 1. Hero Section */}
       <Hero
         onExploreMenu={() => scrollToSection('#menu')}
-        onWhatsNew={() => scrollToSection('#whats-new')}
       />
 
       {/* 2. Story Section */}

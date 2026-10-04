@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Globe, Share2 } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -7,81 +7,107 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#0e0c0a] text-[#faf7f2] pt-20 pb-12 border-t border-[#2e2722]/80 font-manrope">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-[#2e2722]/60">
-          
-          {/* Logo & Tagline */}
-          <div className="md:col-span-5 space-y-6">
-            <a href="#home" className="flex items-center gap-3 text-3xl font-serif tracking-tight group">
-              <img
-                src="/images/the_leaf_official_logo.png"
-                alt="The Leaf. Logo"
-                className="h-10 w-auto object-contain rounded-full border border-[#7d8c79]/30 group-hover:scale-105 transition-transform"
-              />
-              <span className="font-serif">The Leaf<span className="text-[#7d8c79]">.</span></span>
-            </a>
+    <footer className="w-full bg-surface-container-lowest border-t border-outline-variant/30 pt-16 pb-12 font-manrope">
+      <div className="max-w-7xl mx-auto px-6 md:px-16">
+        {/* Large Brand Heading & Sub-ledger */}
+        <div className="mb-16 pb-8 border-b border-outline-variant/20 flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="font-headline-lg text-5xl md:text-7xl font-bodoni text-on-surface/15 select-none tracking-tight">
+            THE LEAF.
+          </div>
+          <div className="font-label-caps text-xs text-outline tracking-widest max-w-md uppercase">
+            1st Floor, E7/161, Arera Colony, Bhopal — 11:00 AM to 11:30 PM
+          </div>
+        </div>
 
-            <p className="text-sm text-[#c4bcae] font-serif italic max-w-sm leading-relaxed">
-              “A cozy corner in Arera Colony for slow mornings, long conversations and everything worth staying for.”
+        {/* 3 Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 pt-2">
+          {/* Column 1: Editions */}
+          <div className="flex flex-col space-y-3">
+            <span className="font-label-caps text-xs text-primary uppercase tracking-widest font-semibold">
+              EDITIONS
+            </span>
+            <div className="flex flex-col space-y-2">
+              <a
+                href="#events"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Nocturne Sessions
+              </a>
+              <a
+                href="#experience"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Balcony Sessions
+              </a>
+              <a
+                href="#menu"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Cupping Archive
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Enquiries */}
+          <div className="flex flex-col space-y-3">
+            <span className="font-label-caps text-xs text-primary uppercase tracking-widest font-semibold">
+              ENQUIRIES
+            </span>
+            <div className="flex flex-col space-y-2">
+              <a
+                href="#visit"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Private Gatherings
+              </a>
+              <a
+                href="#visit"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Press & Archival Requests
+              </a>
+              <a
+                href="#visit"
+                className="font-body-sm text-sm text-on-surface-variant hover:text-on-surface transition-colors"
+              >
+                Botanical Residencies
+              </a>
+            </div>
+          </div>
+
+          {/* Column 3: Hours & Atmosphere */}
+          <div className="flex flex-col space-y-3">
+            <span className="font-label-caps text-xs text-primary uppercase tracking-widest font-semibold">
+              HOURS & ATMOSPHERE
+            </span>
+            <p className="font-body-sm text-sm text-on-surface-variant leading-relaxed">
+              Tuesday through Sunday
+              <br />
+              Dusk till Late (11:00 AM — 11:30 PM)
             </p>
-
-            <div className="flex items-center gap-4 text-[#c4bcae]">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#1c1815] border border-[#2e2722] hover:text-[#7d8c79] hover:border-[#7d8c79]/50 transition-colors" aria-label="Instagram">
-                <Globe className="w-4 h-4" />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-full bg-[#1c1815] border border-[#2e2722] hover:text-[#7d8c79] hover:border-[#7d8c79]/50 transition-colors" aria-label="Social Share">
-                <Share2 className="w-4 h-4" />
-              </a>
-            </div>
+            <p className="font-body-sm text-xs text-outline pt-1 leading-normal">
+              Curated architectural acoustics and low-light botanical atrium.
+            </p>
           </div>
-
-          {/* Quick Links */}
-          <div className="md:col-span-3 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#7d8c79]">EXPLORE</span>
-            <ul className="space-y-2.5 text-xs uppercase tracking-widest text-[#c4bcae] font-mono">
-              <li><a href="#story" className="hover:text-[#faf7f2] transition-colors">Our Story</a></li>
-              <li><a href="#menu" className="hover:text-[#faf7f2] transition-colors">Signature Menu</a></li>
-              <li><a href="#experience" className="hover:text-[#faf7f2] transition-colors">The Atmosphere</a></li>
-              <li><a href="#visit" className="hover:text-[#faf7f2] transition-colors">Visit & Location</a></li>
-            </ul>
-          </div>
-
-          {/* Location & Contact Info */}
-          <div className="md:col-span-4 space-y-4">
-            <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#7d8c79]">FIND US</span>
-            <div className="space-y-3 text-xs text-[#c4bcae]">
-              <p className="leading-relaxed">
-                <strong className="text-[#faf7f2] font-semibold block font-serif text-sm">The Leaf. – Cafe & Brew</strong>
-                1st Floor, E7/161, E-7, Arera Colony,<br />
-                Bhopal, Madhya Pradesh 462016
-              </p>
-              <p>
-                <span className="text-[#7d8c79] font-mono">HOURS:</span> 11:00 AM – 11:30 PM (Daily)
-              </p>
-              <p>
-                <span className="text-[#7d8c79] font-mono">TEL:</span> +91 755 492 8899
-              </p>
-            </div>
-          </div>
-
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#c4bcae]/60">
-          <p>© {new Date().getFullYear()} The Leaf. – Cafe & Brew, Bhopal. All rights reserved.</p>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 hover:text-[#faf7f2] transition-colors cursor-pointer"
-          >
-            <span>BACK TO TOP</span>
-            <ArrowUp className="w-3.5 h-3.5 text-[#7d8c79]" />
-          </button>
+        {/* Sub-Footer Metadata & Top Scroll */}
+        <div className="mt-16 pt-6 border-t border-outline-variant/10 flex flex-col sm:flex-row items-center justify-between text-outline font-label-caps text-[11px] tracking-widest uppercase">
+          <p>© 2025 THE LEAF CAFE. ARERA COLONY, BHOPAL. ALL RIGHTS RESERVED.</p>
+          <div className="mt-3 sm:mt-0 flex items-center gap-4">
+            <span>23.2185° N, 77.4343° E</span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1.5 text-primary hover:text-on-surface transition-colors cursor-pointer"
+            >
+              <span>TOP</span>
+              <ArrowUp className="w-3.5 h-3.5 text-primary" />
+            </button>
+          </div>
         </div>
-
       </div>
     </footer>
   );
 };
+
+

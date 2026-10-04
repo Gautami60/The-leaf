@@ -2,72 +2,160 @@
 
 @layer base {
   :root {
-    --color-espresso: #12100e;
-    --color-espresso-card: #1c1815;
-    --color-espresso-border: #2e2722;
-    --color-ivory: #faf7f2;
-    --color-ivory-muted: #c4bcae;
-    --color-sage: #7d8c79;
-    --color-sage-light: #9ea99b;
-    --color-coffee: #8c6547;
-    --color-coffee-dark: #593e2b;
-    --color-amber-accent: #d4a373;
+    --font-bodoni: 'Bodoni Moda', Georgia, serif;
+    --font-manrope: 'Manrope', sans-serif;
+    --font-display: 'Bodoni Moda', Georgia, serif;
+    --font-body: 'Manrope', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    
+    /* Single Source of Truth: Stitch Dark Mineral & Gold Architecture Tokens */
+    --surface: #121413;
+    --surface-dim: #121413;
+    --surface-container-lowest: #0d0f0e;
+    --surface-container-low: #1a1c1b;
+    --surface-container: #1e201f;
+    --surface-container-high: #282a29;
+    --surface-container-highest: #333534;
+    --primary: #dac498;
+    --primary-container: #b9a47a;
+    --on-primary: #3c2e0f;
+    --on-surface: #e2e3e0;
+    --on-surface-variant: #cfc5b7;
+    --outline: #989083;
+    --outline-variant: #4c463c;
+    --tertiary: #bccaba;
   }
 
   html {
     scroll-behavior: smooth;
-    color: var(--color-ivory);
-    background-color: var(--color-espresso);
-    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--on-surface);
+    background-color: var(--surface);
+    font-family: var(--font-body);
   }
 
   body {
     overflow-x: hidden;
-    background-color: var(--color-espresso);
-    color: var(--color-ivory);
-    font-family: 'Manrope', sans-serif;
+    background-color: var(--surface);
+    color: var(--on-surface);
+    font-family: var(--font-body);
+    overscroll-behavior: none;
   }
 
-  h1, h2, h3, h4, .font-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+  h1, h2, h3, h4, .font-serif, .font-bodoni, .font-headline-lg, .font-headline-md, .font-headline-sm, .font-display-xl, .font-display-lg {
+    font-family: 'Bodoni Moda', Georgia, serif;
   }
 
-  .font-sans, button, input, select, textarea {
-    font-family: 'Manrope', sans-serif;
+  .font-sans, .font-manrope, .font-body-lg, .font-body-md, .font-body-sm, .font-label-caps, button, input, select, textarea {
+    font-family: 'Manrope', -apple-system, sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
   }
 
   /* Custom smooth scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #12100e;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #2e2722;
-    border-radius: 3px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #7d8c79;
+    display: none;
   }
 }
 
-/* Custom editorial typography utilities */
+/* Scrollbar Hiding Utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Custom Stitch Editorial Typography Utilities */
+.font-bodoni {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-manrope {
+  font-family: 'Manrope', -apple-system, sans-serif;
+}
+
+.font-headline-lg {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-headline-md {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-headline-sm {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-display-xl {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-display-lg {
+  font-family: 'Bodoni Moda', Georgia, serif;
+}
+
+.font-label-caps {
+  font-family: 'Manrope', sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.font-body-lg {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-body-md {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-body-sm {
+  font-family: 'Manrope', sans-serif;
+}
+
+.font-instrument {
+  font-family: 'Bodoni Moda', 'Instrument Serif', Georgia, serif;
+}
+
+.font-serif-editorial {
+  font-family: 'Bodoni Moda', 'Instrument Serif', Georgia, serif;
+}
+
+.font-sans-editorial {
+  font-family: 'Manrope', 'Plus Jakarta Sans', sans-serif;
+}
+
 .editorial-serif {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Bodoni Moda', Georgia, serif;
   font-style: normal;
 }
 
 .editorial-italic {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Bodoni Moda', Georgia, serif;
   font-style: italic;
 }
 
-.font-manrope {
-  font-family: 'Manrope', sans-serif;
+/* Liquid Glass & Forest Surface Utilities */
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.04);
+  background-blend-mode: luminosity;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Custom smooth transitions matching cubic-bezier(0.16, 1, 0.3, 1) */
+.forest-glass {
+  background-color: rgba(18, 32, 25, 0.70);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Custom smooth transitions */
 .transition-smooth {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
@@ -89,3 +177,4 @@
     scroll-behavior: auto !important;
   }
 }
+

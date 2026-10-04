@@ -117,8 +117,8 @@ export const INITIAL_EVENTS: EventItem[] = [
     title: 'Acoustic Sunset Live',
     date: 'Saturday · Oct 14',
     time: '7:00 PM – 9:30 PM',
-    description: 'Unwind on our leaf-view balcony with soulful live acoustic guitar, warm lights, and specialty cold brews.',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80',
+    description: 'Unwind on our leaf-view balcony with soulful live acoustic guitar, warm lantern lights, and single-origin cold extractions.',
+    image: '/images/leaf_balcony_night.jpg',
     category: 'Live Music',
     isUpcoming: true
   },
@@ -127,8 +127,8 @@ export const INITIAL_EVENTS: EventItem[] = [
     title: 'Artisanal Coffee Cupping Workshop',
     date: 'Sunday · Oct 15',
     time: '11:30 AM – 1:00 PM',
-    description: 'Learn flavor profiling, V60 pour-over techniques, and taste single-origin Arabicas with our head barista.',
-    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80',
+    description: 'Learn flavor profiling, V60 pour-over techniques, and taste single-origin Karnataka Arabicas with our head roaster.',
+    image: '/images/leaf_indoor_lounge.jpg',
     category: 'Coffee Workshop',
     isUpcoming: true
   },
@@ -137,8 +137,8 @@ export const INITIAL_EVENTS: EventItem[] = [
     title: 'Poetry & Open Mic Evening',
     date: 'Friday · Oct 20',
     time: '7:30 PM – 10:00 PM',
-    description: 'A cozy evening of storytelling, acoustic music, and original poetry in our indoor sanctuary.',
-    image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=800&q=80',
+    description: 'A cozy evening of storytelling, acoustic music, and original spoken word in our upper gallery sanctuary.',
+    image: '/images/leaf_gallery_wall.jpg',
     category: 'Open Mic',
     isUpcoming: true
   }

@@ -6,7 +6,7 @@ export interface MenuItem {
   category: MenuCategory;
   price: number;
   description: string;
-  image: string;
+  image?: string;
   isSignature?: boolean;
   dietary?: ('Veg' | 'Vegan' | 'Chef Special' | 'Contains Nuts')[];
   prepTime?: string;

@@ -34,8 +34,8 @@ export const CoffeeSection: React.FC = () => {
   // 1. LEAF_IMAGE_ASSETS.latte_art
   // 2. LEAF_IMAGE_ASSETS.interior_main (Real uploaded cafe interior)
   // 3. LEAF_IMAGE_ASSETS.hero (Real uploaded balcony)
-  const coffeeAsset = LEAF_IMAGE_ASSETS.latte_art || LEAF_IMAGE_ASSETS.interior_main || LEAF_IMAGE_ASSETS.hero || {
-    url: '/images/real_leaf_interior.jpg',
+  const coffeeAsset = LEAF_IMAGE_ASSETS.indoor_lounge || LEAF_IMAGE_ASSETS.hero_balcony || {
+    url: '/images/leaf_indoor_lounge.jpg',
     alt: 'The Leaf. Specialty Coffee Brew',
     title: 'The Leaf Coffee Craft'
   };

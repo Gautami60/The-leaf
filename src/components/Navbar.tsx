@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu as MenuIcon, X, Calendar, MapPin, Clock, Settings } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu as MenuIcon, X, MapPin, Clock, Settings } from 'lucide-react';
 
 interface NavbarProps {
   onOpenReservation: () => void;
@@ -22,18 +23,24 @@ export const Navbar: React.FC<NavbarProps> = ({
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'Story', href: '#story' },
-    { name: 'Menu', href: '#menu' },
-    { name: "What's New", href: '#whats-new' },
-    { name: 'Offers', href: '#offers' },
-    { name: 'Experience', href: '#experience' },
-    { name: 'Visit', href: '#visit' },
+    { name: 'THE VENUE', href: '#home' },
+    { name: 'EXPERIENCE', href: '#experience' },
+    { name: 'MENU', href: '#menu' },
+    { name: 'ARCHIVE', href: '#whats-new' },
+    { name: 'VISIT', href: '#visit' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
+    if (href === '#reservation') {
+      onOpenReservation();
+      return;
+    }
+    if (href === '#cms-portal') {
+      onOpenCms();
+      return;
+    }
     const element = document.querySelector(href);
     if (element) {
       const navOffset = 80;
@@ -49,36 +56,38 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#12100e]/92 backdrop-blur-md border-b border-[#2e2722]/80 py-4 shadow-2xl'
-            : 'bg-gradient-to-b from-[#12100e]/90 via-[#12100e]/40 to-transparent py-6'
+            ? 'bg-[#0d0f0e]/95 backdrop-blur-md border-b border-[#4c463c]/40 py-3 shadow-2xl'
+            : 'bg-[#0d0f0e]/85 backdrop-blur-md border-b border-[#4c463c]/30 py-4'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="h-16 max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           
-          {/* Logo with Official Uploaded Logo Asset */}
-          <a
-            href="#home"
-            onClick={(e) => handleLinkClick(e, '#home')}
-            className="group flex items-center gap-3 text-2xl md:text-3xl font-serif text-[#faf7f2] tracking-tight hover:opacity-95 transition-all"
-          >
+          {/* Official Brand Lockup */}
+          <div className="flex items-center gap-3">
             <img
               src="/images/the_leaf_official_logo.png"
-              alt="The Leaf. Official Logo"
-              className="h-10 md:h-12 w-auto object-contain rounded-full shadow-md group-hover:scale-105 transition-all duration-300 border border-[#7d8c79]/30"
+              alt="The Leaf Café Emblem"
+              className="h-8 w-auto object-contain opacity-90"
             />
-            <span className="font-serif font-medium tracking-tight">The Leaf<span className="text-[#7d8c79]">.</span></span>
-          </a>
+            <a
+              href="#home"
+              onClick={(e) => handleLinkClick(e, '#home')}
+              className="font-headline-sm text-2xl font-serif text-[#e2e3e0] hover:text-[#dac498] transition-colors tracking-tight select-none"
+            >
+              THE LEAF.
+            </a>
+          </div>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden lg:flex items-center space-x-7 text-xs tracking-widest uppercase text-[#faf7f2]/80 font-manrope font-semibold">
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8 font-label-caps text-xs tracking-[0.18em] uppercase text-[#cfc5b7]">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="relative py-1 transition-colors duration-300 hover:text-[#faf7f2] after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1px] after:bg-[#7d8c79] hover:after:w-full after:transition-all after:duration-300"
+                className="hover:text-[#e2e3e0] transition-colors"
               >
                 {link.name}
               </a>
@@ -86,104 +95,100 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center space-x-3">
-            <button
-              onClick={onOpenCms}
-              className="px-3.5 py-2 text-[11px] font-mono uppercase tracking-wider text-[#c4bcae] hover:text-[#faf7f2] bg-[#1c1815] border border-[#2e2722] hover:border-[#7d8c79]/50 rounded-full transition-all cursor-pointer flex items-center gap-1.5"
-              title="Open CMS / Content Manager"
-            >
-              <Settings className="w-3.5 h-3.5 text-[#7d8c79]" />
-              <span>CMS Portal ⚙️</span>
-            </button>
-
+          <div className="flex items-center gap-4">
             <button
               onClick={onOpenReservation}
-              className="group relative inline-flex items-center gap-2 px-5 py-2.5 text-xs uppercase tracking-widest font-manrope font-bold text-[#12100e] bg-[#faf7f2] hover:bg-[#eae3d2] rounded-full transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 border border-[#dac498] text-[#dac498] font-label-caps text-[11px] uppercase tracking-[0.18em] transition-all duration-300 hover:bg-[#dac498] hover:text-[#3c2e0f] cursor-pointer"
             >
-              <Calendar className="w-3.5 h-3.5 text-[#593e2b]" />
-              <span>Reserve a Table</span>
+              RESERVE A TABLE
             </button>
-          </div>
 
-          {/* Mobile Hamburger Button */}
-          <div className="flex sm:hidden items-center space-x-2">
             <button
               onClick={onOpenCms}
-              className="p-2 text-[#7d8c79]"
-              title="CMS Admin"
+              className="w-8 h-8 rounded-full bg-[#dac498] hover:bg-[#b9a47a] text-[#3c2e0f] flex items-center justify-center shrink-0 cursor-pointer transition-colors"
+              title="CMS Admin / Portal"
             >
-              <Settings className="w-5 h-5" />
+              <span className="material-symbols-outlined text-[18px]">person</span>
             </button>
 
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
-              className="p-2 text-[#faf7f2] hover:text-[#7d8c79] transition-colors focus:outline-none"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
-            </button>
+            {/* Mobile Hamburger Trigger */}
+            <div className="flex lg:hidden items-center">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle menu"
+                className="p-1.5 text-[#e2e3e0] hover:text-[#dac498] transition-colors focus:outline-none cursor-pointer"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
 
         </div>
       </header>
 
-      {/* Mobile Fullscreen Menu Overlay */}
-      <div
-        className={`fixed inset-0 z-40 bg-[#12100e]/98 backdrop-blur-xl flex flex-col justify-between px-8 pt-28 pb-12 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] sm:hidden ${
-          mobileMenuOpen
-            ? 'opacity-100 pointer-events-auto translate-y-0'
-            : 'opacity-0 pointer-events-none -translate-y-4'
-        }`}
-      >
-        <div className="flex flex-col space-y-6">
-          <div className="text-xs uppercase tracking-widest text-[#7d8c79] font-mono">Navigation</div>
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => handleLinkClick(e, link.href)}
-              className="font-serif text-3xl text-[#faf7f2] hover:text-[#7d8c79] transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenCms();
-            }}
-            className="text-left font-mono text-sm text-[#7d8c79] flex items-center gap-2 pt-4 border-t border-[#2e2722]"
+      {/* Mobile Fullscreen Glass Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[#0d0f0e]/98 backdrop-blur-2xl flex flex-col justify-between px-8 pt-28 pb-12 lg:hidden"
           >
-            <Settings className="w-4 h-4" />
-            <span>Open Cafe CMS Manager ⚙️</span>
-          </button>
-        </div>
+            <div className="flex flex-col space-y-6">
+              <span className="font-label-caps text-xs uppercase tracking-[0.2em] text-[#dac498]">
+                NAVIGATION
+              </span>
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleLinkClick(e, link.href)}
+                  className="font-headline-md text-3xl text-[#e2e3e0] hover:text-[#dac498] transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
 
-        <div className="space-y-6 pt-6 border-t border-[#2e2722]/80">
-          <div className="space-y-2 text-xs text-[#c4bcae]">
-            <p className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-[#7d8c79]" />
-              1st Floor, E7/161, E-7, Arera Colony, Bhopal
-            </p>
-            <p className="flex items-center gap-2">
-              <Clock className="w-4 h-4 text-[#7d8c79]" />
-              Open Daily: 11:00 AM – 11:30 PM
-            </p>
-          </div>
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenCms();
+                }}
+                className="text-left font-label-caps text-xs text-[#dac498] flex items-center gap-2 pt-4 border-t border-[#4c463c]/30"
+              >
+                <Settings className="w-4 h-4" />
+                <span>OPEN CMS PORTAL ⚙️</span>
+              </button>
+            </div>
 
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              onOpenReservation();
-            }}
-            className="w-full py-3.5 text-xs uppercase tracking-widest font-manrope font-bold text-[#12100e] bg-[#faf7f2] active:bg-[#eae3d2] rounded-full transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-lg"
-          >
-            <Calendar className="w-4 h-4 text-[#593e2b]" />
-            Reserve a Table
-          </button>
-        </div>
-      </div>
+            <div className="space-y-6 pt-6 border-t border-[#4c463c]/30">
+              <div className="space-y-2 text-xs text-[#cfc5b7] font-body-sm">
+                <p className="flex items-center gap-2">
+                  <MapPin className="w-4 h-4 text-[#dac498]" />
+                  1st Floor, E7/161, Arera Colony, Bhopal
+                </p>
+                <p className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-[#dac498]" />
+                  Open Daily: 11:00 AM – 11:30 PM
+                </p>
+              </div>
+
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenReservation();
+                }}
+                className="w-full py-3.5 bg-[#dac498] text-[#3c2e0f] hover:bg-[#b9a47a] text-xs font-label-caps uppercase tracking-[0.2em] transition-colors flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>RESERVE A TABLE</span>
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };
+
